@@ -1,0 +1,45 @@
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - src/get_data.py
+    - src/load_data.py
+    - data_given/SouthGermanCredit_cassandra.csv
+    outs:
+    - data/raw/SouthGermanCredit_data.csv
+
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py --config=params.yaml
+    deps:
+    - src/data_preprocessing.py
+    - data/raw/SouthGermanCredit_data.csv
+    outs:
+    - data/processed/x_indept_scaled_var.csv
+    - data/processed/y_dept_var.csv
+
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - src/split_data.py
+    #- data/raw/SouthGermanCredit_data.csv
+    - data/processed/x_indept_scaled_var.csv
+    outs:
+    - data/processed/train_Dataset.csv
+    - data/processed/test_Dataset.csv 
+
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - data/processed/train_Dataset.csv
+    - data/processed/test_Dataset.csv 
+    - src/train_and_evaluate.py
+    params:
+    - estimators.GridSearch_rf.params.cv
+    - estimators.GridSearch_rf.params.verbose
+    - estimators.GridSearch_rf.params.n_jobs
+    - estimators.GridSearch_rf.params.refit
+    metrics:
+    - report/params.json:
+        cache: false
+    outs:
+    - saved_models/rf_Grid.joblib

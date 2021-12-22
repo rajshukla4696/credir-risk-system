@@ -1,0 +1,4 @@
+outs:
+- md5: a03b1d2584a02c1125682d562c1b12c5
+  size: 51948
+  path: SouthGermanCredit_cassandra.csv

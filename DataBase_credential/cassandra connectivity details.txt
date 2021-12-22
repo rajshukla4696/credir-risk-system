@@ -1,0 +1,2 @@
+Database Name - German_Credit_Data
+Keyspace Name - Credit_Data

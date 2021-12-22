@@ -1,0 +1,204 @@
+action: GLOB, msg: packaging
+cwd: C:\Python_Lab\ineuron\internship\Credit_Risk_Data\Credit_Risk
+cmd: 'C:\Users\JEEVAN\anaconda3\envs\credit_risk\python.exe' setup.py sdist --formats=zip --dist-dir 'C:\Python_Lab\ineuron\internship\Credit_Risk_Data\Credit_Risk\.tox\dist'
+running sdist
+running egg_info
+writing MyCreditData.egg-info\PKG-INFO
+writing dependency_links to MyCreditData.egg-info\dependency_links.txt
+writing top-level names to MyCreditData.egg-info\top_level.txt
+reading manifest file 'MyCreditData.egg-info\SOURCES.txt'
+writing manifest file 'MyCreditData.egg-info\SOURCES.txt'
+running check
+warning: check: missing required meta-data: url
+
+warning: check: missing meta-data: either (author and author_email) or (maintainer and maintainer_email) must be supplied
+
+creating MyCreditData-0.0.0
+creating MyCreditData-0.0.0\.dvc
+creating MyCreditData-0.0.0\.dvc\plots
+creating MyCreditData-0.0.0\Cassandra_Python_Connectivity
+creating MyCreditData-0.0.0\Cassandra_Python_Connectivity\__pycache__
+creating MyCreditData-0.0.0\DataBase_credential
+creating MyCreditData-0.0.0\MyCreditData.egg-info
+creating MyCreditData-0.0.0\__pycache__
+creating MyCreditData-0.0.0\common
+creating MyCreditData-0.0.0\common\__pycache__
+creating MyCreditData-0.0.0\data
+creating MyCreditData-0.0.0\data\processed
+creating MyCreditData-0.0.0\data\raw
+creating MyCreditData-0.0.0\data_given
+creating MyCreditData-0.0.0\logs
+creating MyCreditData-0.0.0\notebooks
+creating MyCreditData-0.0.0\notebooks\.ipynb_checkpoints
+creating MyCreditData-0.0.0\saved_models
+creating MyCreditData-0.0.0\src
+creating MyCreditData-0.0.0\src\__pycache__
+copying files to MyCreditData-0.0.0...
+copying .dvcignore -> MyCreditData-0.0.0
+copying .gitignore -> MyCreditData-0.0.0
+copying dvc.lock -> MyCreditData-0.0.0
+copying dvc.yaml -> MyCreditData-0.0.0
+copying fastapi_app.py -> MyCreditData-0.0.0
+copying params.yaml -> MyCreditData-0.0.0
+copying readme.md -> MyCreditData-0.0.0
+copying requirements.txt -> MyCreditData-0.0.0
+copying runner.py -> MyCreditData-0.0.0
+copying setup.py -> MyCreditData-0.0.0
+copying template.py -> MyCreditData-0.0.0
+copying .dvc\.gitignore -> MyCreditData-0.0.0\.dvc
+copying .dvc\config -> MyCreditData-0.0.0\.dvc
+copying .dvc\plots\confusion.json -> MyCreditData-0.0.0\.dvc\plots
+copying .dvc\plots\confusion_normalized.json -> MyCreditData-0.0.0\.dvc\plots
+copying .dvc\plots\linear.json -> MyCreditData-0.0.0\.dvc\plots
+copying .dvc\plots\scatter.json -> MyCreditData-0.0.0\.dvc\plots
+copying .dvc\plots\simple.json -> MyCreditData-0.0.0\.dvc\plots
+copying .dvc\plots\smooth.json -> MyCreditData-0.0.0\.dvc\plots
+copying Cassandra_Python_Connectivity\__init__.py -> MyCreditData-0.0.0\Cassandra_Python_Connectivity
+copying Cassandra_Python_Connectivity\connect_database.py -> MyCreditData-0.0.0\Cassandra_Python_Connectivity
+copying Cassandra_Python_Connectivity\__pycache__\connect_database.cpython-37.pyc -> MyCreditData-0.0.0\Cassandra_Python_Connectivity\__pycache__
+copying DataBase_credential\GeneratedToken.csv -> MyCreditData-0.0.0\DataBase_credential
+copying DataBase_credential\cassandra connectivity details.txt -> MyCreditData-0.0.0\DataBase_credential
+copying DataBase_credential\secure-connect-german-credit-data.zip -> MyCreditData-0.0.0\DataBase_credential
+copying MyCreditData.egg-info\PKG-INFO -> MyCreditData-0.0.0\MyCreditData.egg-info
+copying MyCreditData.egg-info\SOURCES.txt -> MyCreditData-0.0.0\MyCreditData.egg-info
+copying MyCreditData.egg-info\dependency_links.txt -> MyCreditData-0.0.0\MyCreditData.egg-info
+copying MyCreditData.egg-info\top_level.txt -> MyCreditData-0.0.0\MyCreditData.egg-info
+copying __pycache__\fastapi_app.cpython-37.pyc -> MyCreditData-0.0.0\__pycache__
+copying common\__init__.py -> MyCreditData-0.0.0\common
+copying common\custom_functions.py -> MyCreditData-0.0.0\common
+copying common\__pycache__\custom_functions.cpython-37.pyc -> MyCreditData-0.0.0\common\__pycache__
+copying data\processed\.gitignore -> MyCreditData-0.0.0\data\processed
+copying data\processed\.gitkeep -> MyCreditData-0.0.0\data\processed
+copying data\processed\x_indept_scaled_var.csv -> MyCreditData-0.0.0\data\processed
+copying data\processed\y_dept_var.csv -> MyCreditData-0.0.0\data\processed
+copying data\raw\.gitignore -> MyCreditData-0.0.0\data\raw
+copying data\raw\.gitkeep -> MyCreditData-0.0.0\data\raw
+copying data_given\.gitignore -> MyCreditData-0.0.0\data_given
+copying data_given\SouthGermanCredit_cassandra.csv.dvc -> MyCreditData-0.0.0\data_given
+copying logs\__main__.log -> MyCreditData-0.0.0\logs
+copying logs\connect_database.log -> MyCreditData-0.0.0\logs
+copying logs\data_preprocessing.log -> MyCreditData-0.0.0\logs
+copying logs\get_data.log -> MyCreditData-0.0.0\logs
+copying logs\load_data.log -> MyCreditData-0.0.0\logs
+copying logs\src.log -> MyCreditData-0.0.0\logs
+copying notebooks\.gitkeep -> MyCreditData-0.0.0\notebooks
+copying notebooks\Data_for_model.pkl -> MyCreditData-0.0.0\notebooks
+copying notebooks\EDA_Model_Building.ipynb -> MyCreditData-0.0.0\notebooks
+copying notebooks\MinMaxScaler.pkl -> MyCreditData-0.0.0\notebooks
+copying notebooks\ohenc.pkl -> MyCreditData-0.0.0\notebooks
+copying notebooks\rf_Grid.pkl -> MyCreditData-0.0.0\notebooks
+copying notebooks\.ipynb_checkpoints\EDA_Model_Building-checkpoint.ipynb -> MyCreditData-0.0.0\notebooks\.ipynb_checkpoints
+copying saved_models\.gitkeep -> MyCreditData-0.0.0\saved_models
+copying saved_models\MinMaxScaler.pkl -> MyCreditData-0.0.0\saved_models
+copying saved_models\ohenc.pkl -> MyCreditData-0.0.0\saved_models
+copying src\.gitkeep -> MyCreditData-0.0.0\src
+copying src\__init__.py -> MyCreditData-0.0.0\src
+copying src\custom_function.py -> MyCreditData-0.0.0\src
+copying src\data_preprocessing.py -> MyCreditData-0.0.0\src
+copying src\get_data.py -> MyCreditData-0.0.0\src
+copying src\load_data.py -> MyCreditData-0.0.0\src
+copying src\split_data.py -> MyCreditData-0.0.0\src
+copying src\train_and_evaluate.py -> MyCreditData-0.0.0\src
+copying src\__pycache__\custom_function.cpython-37.pyc -> MyCreditData-0.0.0\src\__pycache__
+copying src\__pycache__\data_preprocessing.cpython-37.pyc -> MyCreditData-0.0.0\src\__pycache__
+copying src\__pycache__\get_data.cpython-37.pyc -> MyCreditData-0.0.0\src\__pycache__
+copying src\__pycache__\load_data.cpython-37.pyc -> MyCreditData-0.0.0\src\__pycache__
+copying src\__pycache__\split_data.cpython-37.pyc -> MyCreditData-0.0.0\src\__pycache__
+Writing MyCreditData-0.0.0\setup.cfg
+creating C:\Python_Lab\ineuron\internship\Credit_Risk_Data\Credit_Risk\.tox\dist
+creating 'C:\Python_Lab\ineuron\internship\Credit_Risk_Data\Credit_Risk\.tox\dist\MyCreditData-0.0.0.zip' and adding 'MyCreditData-0.0.0' to it
+adding 'MyCreditData-0.0.0'
+adding 'MyCreditData-0.0.0\.dvc'
+adding 'MyCreditData-0.0.0\Cassandra_Python_Connectivity'
+adding 'MyCreditData-0.0.0\common'
+adding 'MyCreditData-0.0.0\data'
+adding 'MyCreditData-0.0.0\DataBase_credential'
+adding 'MyCreditData-0.0.0\data_given'
+adding 'MyCreditData-0.0.0\logs'
+adding 'MyCreditData-0.0.0\MyCreditData.egg-info'
+adding 'MyCreditData-0.0.0\notebooks'
+adding 'MyCreditData-0.0.0\saved_models'
+adding 'MyCreditData-0.0.0\src'
+adding 'MyCreditData-0.0.0\__pycache__'
+adding 'MyCreditData-0.0.0\.dvcignore'
+adding 'MyCreditData-0.0.0\.gitignore'
+adding 'MyCreditData-0.0.0\dvc.lock'
+adding 'MyCreditData-0.0.0\dvc.yaml'
+adding 'MyCreditData-0.0.0\fastapi_app.py'
+adding 'MyCreditData-0.0.0\params.yaml'
+adding 'MyCreditData-0.0.0\PKG-INFO'
+adding 'MyCreditData-0.0.0\readme.md'
+adding 'MyCreditData-0.0.0\requirements.txt'
+adding 'MyCreditData-0.0.0\runner.py'
+adding 'MyCreditData-0.0.0\setup.cfg'
+adding 'MyCreditData-0.0.0\setup.py'
+adding 'MyCreditData-0.0.0\template.py'
+adding 'MyCreditData-0.0.0\.dvc\plots'
+adding 'MyCreditData-0.0.0\.dvc\.gitignore'
+adding 'MyCreditData-0.0.0\.dvc\config'
+adding 'MyCreditData-0.0.0\.dvc\plots\confusion.json'
+adding 'MyCreditData-0.0.0\.dvc\plots\confusion_normalized.json'
+adding 'MyCreditData-0.0.0\.dvc\plots\linear.json'
+adding 'MyCreditData-0.0.0\.dvc\plots\scatter.json'
+adding 'MyCreditData-0.0.0\.dvc\plots\simple.json'
+adding 'MyCreditData-0.0.0\.dvc\plots\smooth.json'
+adding 'MyCreditData-0.0.0\Cassandra_Python_Connectivity\__pycache__'
+adding 'MyCreditData-0.0.0\Cassandra_Python_Connectivity\connect_database.py'
+adding 'MyCreditData-0.0.0\Cassandra_Python_Connectivity\__init__.py'
+adding 'MyCreditData-0.0.0\Cassandra_Python_Connectivity\__pycache__\connect_database.cpython-37.pyc'
+adding 'MyCreditData-0.0.0\common\__pycache__'
+adding 'MyCreditData-0.0.0\common\custom_functions.py'
+adding 'MyCreditData-0.0.0\common\__init__.py'
+adding 'MyCreditData-0.0.0\common\__pycache__\custom_functions.cpython-37.pyc'
+adding 'MyCreditData-0.0.0\data\processed'
+adding 'MyCreditData-0.0.0\data\raw'
+adding 'MyCreditData-0.0.0\data\processed\.gitignore'
+adding 'MyCreditData-0.0.0\data\processed\.gitkeep'
+adding 'MyCreditData-0.0.0\data\processed\x_indept_scaled_var.csv'
+adding 'MyCreditData-0.0.0\data\processed\y_dept_var.csv'
+adding 'MyCreditData-0.0.0\data\raw\.gitignore'
+adding 'MyCreditData-0.0.0\data\raw\.gitkeep'
+adding 'MyCreditData-0.0.0\DataBase_credential\cassandra connectivity details.txt'
+adding 'MyCreditData-0.0.0\DataBase_credential\GeneratedToken.csv'
+adding 'MyCreditData-0.0.0\DataBase_credential\secure-connect-german-credit-data.zip'
+adding 'MyCreditData-0.0.0\data_given\.gitignore'
+adding 'MyCreditData-0.0.0\data_given\SouthGermanCredit_cassandra.csv.dvc'
+adding 'MyCreditData-0.0.0\logs\connect_database.log'
+adding 'MyCreditData-0.0.0\logs\data_preprocessing.log'
+adding 'MyCreditData-0.0.0\logs\get_data.log'
+adding 'MyCreditData-0.0.0\logs\load_data.log'
+adding 'MyCreditData-0.0.0\logs\src.log'
+adding 'MyCreditData-0.0.0\logs\__main__.log'
+adding 'MyCreditData-0.0.0\MyCreditData.egg-info\dependency_links.txt'
+adding 'MyCreditData-0.0.0\MyCreditData.egg-info\PKG-INFO'
+adding 'MyCreditData-0.0.0\MyCreditData.egg-info\SOURCES.txt'
+adding 'MyCreditData-0.0.0\MyCreditData.egg-info\top_level.txt'
+adding 'MyCreditData-0.0.0\notebooks\.ipynb_checkpoints'
+adding 'MyCreditData-0.0.0\notebooks\.gitkeep'
+adding 'MyCreditData-0.0.0\notebooks\Data_for_model.pkl'
+adding 'MyCreditData-0.0.0\notebooks\EDA_Model_Building.ipynb'
+adding 'MyCreditData-0.0.0\notebooks\MinMaxScaler.pkl'
+adding 'MyCreditData-0.0.0\notebooks\ohenc.pkl'
+adding 'MyCreditData-0.0.0\notebooks\rf_Grid.pkl'
+adding 'MyCreditData-0.0.0\notebooks\.ipynb_checkpoints\EDA_Model_Building-checkpoint.ipynb'
+adding 'MyCreditData-0.0.0\saved_models\.gitkeep'
+adding 'MyCreditData-0.0.0\saved_models\MinMaxScaler.pkl'
+adding 'MyCreditData-0.0.0\saved_models\ohenc.pkl'
+adding 'MyCreditData-0.0.0\src\__pycache__'
+adding 'MyCreditData-0.0.0\src\.gitkeep'
+adding 'MyCreditData-0.0.0\src\custom_function.py'
+adding 'MyCreditData-0.0.0\src\data_preprocessing.py'
+adding 'MyCreditData-0.0.0\src\get_data.py'
+adding 'MyCreditData-0.0.0\src\load_data.py'
+adding 'MyCreditData-0.0.0\src\split_data.py'
+adding 'MyCreditData-0.0.0\src\train_and_evaluate.py'
+adding 'MyCreditData-0.0.0\src\__init__.py'
+adding 'MyCreditData-0.0.0\src\__pycache__\custom_function.cpython-37.pyc'
+adding 'MyCreditData-0.0.0\src\__pycache__\data_preprocessing.cpython-37.pyc'
+adding 'MyCreditData-0.0.0\src\__pycache__\get_data.cpython-37.pyc'
+adding 'MyCreditData-0.0.0\src\__pycache__\load_data.cpython-37.pyc'
+adding 'MyCreditData-0.0.0\src\__pycache__\split_data.cpython-37.pyc'
+adding 'MyCreditData-0.0.0\__pycache__\fastapi_app.cpython-37.pyc'
+removing 'MyCreditData-0.0.0' (and everything under it)
+error removing MyCreditData-0.0.0: [WinError 145] The directory is not empty: 'MyCreditData-0.0.0\\common'
+error removing MyCreditData-0.0.0: [WinError 145] The directory is not empty: 'MyCreditData-0.0.0'

@@ -1,0 +1,51 @@
+
+      
+base:
+  project: Credit_Risk-project
+  random_state: 42
+  target_col: credit_risk
+
+cassandra_connectivity:
+  secure_connect_bundle : 'DataBase_credential\secure-connect-german-credit-data.zip'
+  ASTRA_CLIENT_ID : 'RIIxKjdEAlUJurndLkiLZYLZ'
+  ASTRA_CLIENT_SECRET: 'iwnM6w2lJkBhY5+-214UeaZDHvpZaMuMmu2wXmQgQ1yZJiZODAJqJ4qAzR+l7fnJCiWl_iMIlsTW-AZBmS9ChmM_QnW+rKv7oSXNci,F9NMGTi+dbJeXj.Gkj6xnJzuY'
+
+data_sources:
+  cassandra_DB_Name : 'Credit_Data1'
+  cassandra_Table_Name : '"SouthGermanCredit"'
+  query : "SELECT * FROM {0};"
+  cassandra_to_local_path: data_given/SouthGermanCredit_cassandra.csv
+
+  
+load_data:
+  raw_dataset_csv: data/raw/SouthGermanCredit_data.csv
+
+Feature_extraction:
+  x_indept_scaled_var: data/processed/x_indept_scaled_var.csv
+  y_dept_var: data/processed/y_dept_var.csv
+
+split_data:
+  train_path: data/processed/train_Dataset.csv
+  test_path: data/processed/test_Dataset.csv
+  test_size: 0.3
+
+one_hot_encoding:
+  ohencs: saved_models/ohenc.pkl
+  minmaxscaler: saved_models/MinMaxScaler.
+  
+estimators:
+  GridSearch_rf:
+    params:
+      # alpha: 0.88
+      # l1_ratio: 0.89
+      cv: 3
+      verbose: 2
+      n_jobs : 4
+      refit : True
+
+
+report:
+  params: report/params.json
+  scores: report/scores.json
+
+model_dir : saved_models

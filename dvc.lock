@@ -1,0 +1,75 @@
+schema: '2.0'
+stages:
+  load_data:
+    cmd: python src/load_data.py --config=params.yaml
+    deps:
+    - path: data_given/SouthGermanCredit_cassandra.csv
+      md5: a03b1d2584a02c1125682d562c1b12c5
+      size: 51948
+    - path: src/get_data.py
+      md5: 3645a166428164b80bca41a8cc4bd9d4
+      size: 1444
+    - path: src/load_data.py
+      md5: f0385d86077e434b9d504ca27b53b0d6
+      size: 1463
+    outs:
+    - path: data/raw/SouthGermanCredit_data.csv
+      md5: a03b1d2584a02c1125682d562c1b12c5
+      size: 51948
+  data_preprocessing:
+    cmd: python src/data_preprocessing.py --config=params.yaml
+    deps:
+    - path: data/raw/SouthGermanCredit_data.csv
+      md5: a03b1d2584a02c1125682d562c1b12c5
+      size: 51948
+    - path: src/data_preprocessing.py
+      md5: a1d3656f0a633a3e4bf9b237b61c660b
+      size: 7658
+    outs:
+    - path: data/processed/x_indept_scaled_var.csv
+      md5: 5c942ac640b428fdfb6dce682424dcca
+      size: 250956
+    - path: data/processed/y_dept_var.csv
+      md5: e0b1ad4c4586cb1a6b7e2d355633d477
+      size: 3013
+  split_data:
+    cmd: python src/split_data.py --config=params.yaml
+    deps:
+    - path: data/processed/x_indept_scaled_var.csv
+      md5: 5c942ac640b428fdfb6dce682424dcca
+      size: 250956
+    - path: src/split_data.py
+      md5: caee99cb2d0704266169650891af147a
+      size: 1963
+    outs:
+    - path: data/processed/test_Dataset.csv
+      md5: b2d197cd38f1e6b0654cc0b97d44a164
+      size: 76168
+    - path: data/processed/train_Dataset.csv
+      md5: 237b6d6fe79638dd4c1368eac1eb6f2d
+      size: 177090
+  train_and_evaluate:
+    cmd: python src/train_and_evaluate.py --config=params.yaml
+    deps:
+    - path: data/processed/test_Dataset.csv
+      md5: b2d197cd38f1e6b0654cc0b97d44a164
+      size: 76168
+    - path: data/processed/train_Dataset.csv
+      md5: 237b6d6fe79638dd4c1368eac1eb6f2d
+      size: 177090
+    - path: src/train_and_evaluate.py
+      md5: 6c771f7d001e034e3236ce0e18fb28f9
+      size: 6225
+    params:
+      params.yaml:
+        estimators.GridSearch_rf.params.cv: 3
+        estimators.GridSearch_rf.params.n_jobs: 4
+        estimators.GridSearch_rf.params.refit: true
+        estimators.GridSearch_rf.params.verbose: 2
+    outs:
+    - path: report/params.json
+      md5: 71b5d9bffc4babd9b591c79dd114a9b4
+      size: 160
+    - path: saved_models/rf_Grid.joblib
+      md5: a07690bd9b088c77fd7478d450a1b5cc
+      size: 138397

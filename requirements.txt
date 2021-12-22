@@ -1,0 +1,9 @@
+dvc
+dvc[gdrive]
+sklearn
+pandas
+cassandra-driver==3.25.0
+matplotlib
+pytest
+tox
+flake8
