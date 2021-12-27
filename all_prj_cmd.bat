@@ -1,0 +1,5 @@
+"python src/get_data.py"
+"python src/load_data.py"
+"python src/data_preprocessing.py"
+"python src/split_data.py"
+"python src/train_and_evaluate.py"

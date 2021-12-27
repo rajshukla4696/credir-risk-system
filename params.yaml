@@ -31,7 +31,7 @@ split_data:
 
 one_hot_encoding:
   ohencs: saved_models/ohenc.pkl
-  minmaxscaler: saved_models/MinMaxScaler.
+  minmaxscaler: saved_models/MinMaxScaler.pkl
   
 estimators:
   GridSearch_rf:
@@ -49,3 +49,7 @@ report:
   scores: report/scores.json
 
 model_dir : saved_models
+
+flask:
+  data_dirr : 'C:\Python_Lab\ineuron\internship\Credit_Risk_Data\Credit_Risk\data_given'
+  data: SouthGermanCredit_cassandra.csv

@@ -17,7 +17,7 @@ import json
 import joblib
 import argparse
 import logging
-from common.custom_functions import *
+from custom_function import *
 #from get_data import read_params
 log_dir='logs'
 logger = logging.getLogger(__name__)

@@ -94,7 +94,8 @@ def Feature_extraction(config_path):
     ohenc = OneHotEncoder(sparse=False, dtype=int).fit(X[nominaldata1])
     encoded_data = ohenc.transform(X[nominaldata1])
     encoded_df = pd.DataFrame(encoded_data, columns = [ f'OHE{i}' for i in range(1, encoded_data.shape[1] + 1)])
-    X = X.reset_index(drop=True).drop(nominaldata1, axis=1).merge(encoded_df, how='left', left_index=True,right_index=True)
+    drop_cols = ['employment_duration', 'property', 'id']
+    X = X.drop(drop_cols + nominaldata1, axis=1).merge(encoded_df, how='left', left_index=True,right_index=True)
     ohenc_file = config["one_hot_encoding"]["ohencs"]
     with open(ohenc_file, 'wb') as pkl_file:
         pickle.dump(ohenc, pkl_file) 

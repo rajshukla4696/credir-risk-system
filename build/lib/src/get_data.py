@@ -8,7 +8,7 @@ import pandas as pd
 import argparse
 #import connect_database
 #from logger import get_logger
-from custom_functions import *
+from custom_function import *
 import logging
 
 

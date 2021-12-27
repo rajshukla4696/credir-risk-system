@@ -6,7 +6,7 @@ import yaml
 import argparse
 from get_data import *
 import pandas as pd
-from custom_functions import *
+from custom_function import *
 import logging
 
 log_dir='logs'

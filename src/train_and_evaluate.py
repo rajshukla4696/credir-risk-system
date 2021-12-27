@@ -39,6 +39,7 @@ def train_and_evaluate(config_path):
     train_data_path = config["split_data"]["train_path"]
     random_state = config["base"]["random_state"]
     model_dir = config["model_dir"]
+    print(model_dir)
     target = [config["base"]["target_col"]]
     train = pd.read_csv(train_data_path, sep=",")
     test = pd.read_csv(test_data_path, sep=",")
