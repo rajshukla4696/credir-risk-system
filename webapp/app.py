@@ -1,5 +1,5 @@
 import os
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, url_for, redirect
 import pandas as pd
 import numpy as np
 import pickle
@@ -61,11 +61,22 @@ def predict_diff_thresh(pred_probs, thresh):
     return np.where(pred_probs > thresh, 1, 0)
 
 
-@app.route("/")
+@app.route("/home/", methods=['GET', 'POST'])
 def index():
     with open(minmax_fn, 'r') as json_file:
         minmax_dict = json.load(json_file)
     context = minmax_dict
+
+    if request.method == 'POST':
+        data = request.form.to_dict()
+        # del data['form_submit']
+        data = { k: int(v) for k, v in data.items() }
+        
+        data_in = preprocess_features(pd.DataFrame([data]))
+
+        probability = model.predict_proba(data_in)[:, 1]
+        prediction = predict_diff_thresh(probability, threshold)
+        context['credit_risk'] = credit_risk_dict[prediction.tolist()[0]]
     return render_template("index.html", **context); 
 
 @app.route('/predict', methods=['GET', 'POST'])
@@ -78,6 +89,7 @@ def predict():
 
     probability = model.predict_proba(data_in)[:, 1]
     prediction = predict_diff_thresh(probability, threshold)
+    # return redirect(url_for('index'), )
     return jsonify({ 'credit_risk': credit_risk_dict[prediction.tolist()[0]] })
 
 

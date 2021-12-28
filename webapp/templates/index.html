@@ -1,190 +1,201 @@
-<html>
-    <head>
-        <title>Credit Risk System</title>
-        <link rel="stylesheet" href="static\css\bootstrap.min.css">
-    </head>
+{% extends 'base_generic.html' %}
 
-    <body>
+{% block title %} Credit Risk System {% endblock %}
 
-        <form style="margin-top: 2em;" class="form-horizontal" method="post" action="/predict">
-            <fieldset>
-            
-            <!-- Form Name -->
-            <legend style="text-align: center; font-size: 35px;">Credit Risk System</legend>
+{% block body %}
+<form style="margin-top: 2em;" class="form-horizontal" method="post" action="/home/">
+    <fieldset>
 
-            <div class="container-fluid">
-                <div class="row">
-                    <div class="col-md-6">
-                        <!-- Status -->
-                        <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label">Status</label>
-                            <div class="col-md-8">
-                                <select name="status" class="form-control" required>
+        <!-- Form Name -->
+        <legend style="text-align: center; font-size: 35px;">Credit Risk System</legend>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <!-- Status -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Status</label>
+                        <div class="col-md-8">
+                            <select name="status" class="form-control" required>
                                 <option value="1">no checking account</option>
                                 <option value="2">... &lt; 0 DM</option>
                                 <option value="3">0&lt;= ... &lt; 200 DM</option>
                                 <option value="4">... &gt;= 200 DM / salary for at least 1 year</option>
-                                </select>
-                            </div>
-                            </div>
-                            
-                            <!-- Duration -->
-                            <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label" for="duration">Duration</label>  
-                            <div class="col-md-8">
-                            <input id="duration" name="duration" type="number"
-                            min="{{ duration.min }}" max="{{ duration.max}}" 
-                            placeholder="range - {{ duration.min }} to {{ duration.max}}" 
-                            class="form-control input-md" required>    
-                            </div>
-                            </div>
-                
-                            <!-- Credit History -->
-                            <div class="form-group" style="padding-top: 1em">
-                                <label class="col-md-3 control-label">Credit History</label>
-                                <div class="col-md-8">
-                                    <select name="credit_history" class="form-control" required>
-                                    <option value="0">delay in paying off in the past</option>
-                                    <option value="1">critical account/other credits elsewhere</option>
-                                    <option value="2">no credits taken/all credits paid back duly</option>
-                                    <option value="3">existing credits paid back duly till now</option>
-                                    <option value="4">all credits at this bank paid back duly</option>
-                                    </select>
-                                </div>
-                            </div>
-                
-                            <!-- Purpose -->
-                            <div class="form-group" style="padding-top: 1em">
-                                <label class="col-md-3 control-label">Purpose</label>
-                                <div class="col-md-8">
-                                    <select name="purpose" class="form-control" required>
-                                        <option value="0">others</option>
-                                        <option value="1">car (new)</option>
-                                        <option value="2">car (used)</option>
-                                        <option value="3">furniture/equipment</option>
-                                        <option value="4">radio/television</option>
-                                        <option value="5">domestic appliances</option>
-                                        <option value="6">repairs</option>
-                                        <option value="7">education</option>
-                                        <option value="8">vacation</option>
-                                        <option value="9">retraining</option>
-                                        <option value="10">business</option>
-                                    </select>
-                                </div>
-                            </div>
-                
-                            <!-- Amount -->
-                            <div class="form-group" style="padding-top: 1em">
-                                <label class="col-md-3 control-label" for="amount">Amount</label>  
-                                <div class="col-md-8">
-                                <input id="amount" name="amount" type="number"
-                                min="{{ amount.min }}" max="{{ amount.max }}" 
-                                placeholder="range - {{ amount.min }} to {{ amount.max}}" 
-                                class="form-control input-md" required>    
-                                </div>
-                            </div>
-                
-                            <!-- Savings -->
-                            <div class="form-group" style="padding-top: 1em">
-                                <label class="col-md-3 control-label">Savings</label>
-                                <div class="col-md-8">
-                                    <select name="savings" class="form-control" required>
-                                        <option value="1">unknown/no savings account</option>
-                                        <option value="2">... <  100 DM</option>
-                                        <option value="3">100 <= ... <  500 DM</option>
-                                        <option value="4">500 <= ... < 1000 DM</option>
-                                        <option value="5">... >= 1000 DM</option>
-                                    </select>
-                                </div>
-                            </div>
+                            </select>
+                        </div>
                     </div>
-                    
-                    
-                    <div class="col-md-6">
-                        <!-- Personal Status Sex -->
-                        <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label">Personal Status Sex</label>
-                            <div class="col-md-8">
-                                <select name="personal_status_sex" class="form-control" required>
-                                    <option value="1">male : divorced/separated</option>
-                                    <option value="2">female : non-single or male : single</option>
-                                    <option value="3">male : married/widowed</option>
-                                    <option value="4">female : single</option>
-                                </select>
-                            </div>
-                        </div>
 
-                        <!-- Other Debtors -->
-                        <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label">Other Debtors</label>
-                            <div class="col-md-8">
-                                <select name="other_debtors" class="form-control" required>
-                                    <option value="1">none</option>
-                                    <option value="2">co-applicant</option>
-                                    <option value="3">guarantor</option>
-                                </select>
-                            </div>
+                    <!-- Duration -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label" for="duration">Duration</label>
+                        <div class="col-md-8">
+                            <input id="duration" name="duration" type="number" min="{{ duration.min }}"
+                                max="{{ duration.max}}" placeholder="range - {{ duration.min }} to {{ duration.max}}"
+                                class="form-control input-md" required>
                         </div>
+                    </div>
 
-                        <!-- Age -->
-                        <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label" for="age">Age</label>  
-                            <div class="col-md-8">
-                            <input id="age" name="age" type="number"
-                            min="{{ age.min }}" max="{{ age.max }}" 
-                            placeholder="range - {{ age.min }} to {{ age.max}}" 
-                            class="form-control input-md" required>    
-                            </div>
+                    <!-- Credit History -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Credit History</label>
+                        <div class="col-md-8">
+                            <select name="credit_history" class="form-control" required>
+                                <option value="0">delay in paying off in the past</option>
+                                <option value="1">critical account/other credits elsewhere</option>
+                                <option value="2">no credits taken/all credits paid back duly</option>
+                                <option value="3">existing credits paid back duly till now</option>
+                                <option value="4">all credits at this bank paid back duly</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <!-- Other Installment Plans -->
-                        <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label">Other Installment Plans</label>
-                            <div class="col-md-8">
-                                <select name="other_installment_plans" class="form-control" required>
-                                    <option value="1">bank</option>
-                                    <option value="2">stores</option>
-                                    <option value="3">none</option>
-                                </select>
-                            </div>
+                    <!-- Purpose -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Purpose</label>
+                        <div class="col-md-8">
+                            <select name="purpose" class="form-control" required>
+                                <option value="0">others</option>
+                                <option value="1">car (new)</option>
+                                <option value="2">car (used)</option>
+                                <option value="3">furniture/equipment</option>
+                                <option value="4">radio/television</option>
+                                <option value="5">domestic appliances</option>
+                                <option value="6">repairs</option>
+                                <option value="7">education</option>
+                                <option value="8">vacation</option>
+                                <option value="9">retraining</option>
+                                <option value="10">business</option>
+                            </select>
                         </div>
+                    </div>
 
-                        <!-- Housing -->
-                        <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label">Housing</label>
-                            <div class="col-md-8">
-                                <select name="housing" class="form-control" required>
-                                    <option value="1">for free</option>
-                                    <option value="2">rent</option>
-                                    <option value="3">own</option>
-                                </select>
-                            </div>
+                    <!-- Amount -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label" for="amount">Amount</label>
+                        <div class="col-md-8">
+                            <input id="amount" name="amount" type="number" min="{{ amount.min }}" max="{{ amount.max }}"
+                                placeholder="range - {{ amount.min }} to {{ amount.max}}" class="form-control input-md"
+                                required>
                         </div>
+                    </div>
 
-                        <!-- Foreign Worker -->
-                        <div class="form-group" style="padding-top: 1em">
-                            <label class="col-md-3 control-label">Foreign Worker</label>
-                            <div class="col-md-8">
-                                <select name="foreign_worker" class="form-control" required>
-                                    <option value="1">yes</option>
-                                    <option value="2">no</option>
-                                </select>
-                            </div>
+                    <!-- Savings -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Savings</label>
+                        <div class="col-md-8">
+                            <select name="savings" class="form-control" required>
+                                <option value="1">unknown/no savings account</option>
+                                <option value="2">... < 100 DM</option>
+                                <option value="3">100 <= ... < 500 DM</option>
+                                <option value="4">500 <= ... < 1000 DM</option>
+                                <option value="5">... >= 1000 DM</option>
+                            </select>
                         </div>
                     </div>
                 </div>
 
-                <div class="row" style="margin-top: 3em;">
-                    <div class="col-md-5"></div>
-                    <div class="col-md-2" style="text-align: center;">
-                        <button type="submit" class="btn btn-success btn-lg" name="form_submit">Submit</button>
+
+                <div class="col-md-6">
+                    <!-- Personal Status Sex -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Personal Status Sex</label>
+                        <div class="col-md-8">
+                            <select name="personal_status_sex" class="form-control" required>
+                                <option value="1">male : divorced/separated</option>
+                                <option value="2">female : non-single or male : single</option>
+                                <option value="3">male : married/widowed</option>
+                                <option value="4">female : single</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Other Debtors -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Other Debtors</label>
+                        <div class="col-md-8">
+                            <select name="other_debtors" class="form-control" required>
+                                <option value="1">none</option>
+                                <option value="2">co-applicant</option>
+                                <option value="3">guarantor</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Age -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label" for="age">Age</label>
+                        <div class="col-md-8">
+                            <input id="age" name="age" type="number" min="{{ age.min }}" max="{{ age.max }}"
+                                placeholder="range - {{ age.min }} to {{ age.max}}" class="form-control input-md"
+                                required>
+                        </div>
+                    </div>
+
+                    <!-- Other Installment Plans -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Other Installment Plans</label>
+                        <div class="col-md-8">
+                            <select name="other_installment_plans" class="form-control" required>
+                                <option value="1">bank</option>
+                                <option value="2">stores</option>
+                                <option value="3">none</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Housing -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Housing</label>
+                        <div class="col-md-8">
+                            <select name="housing" class="form-control" required>
+                                <option value="1">for free</option>
+                                <option value="2">rent</option>
+                                <option value="3">own</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <!-- Foreign Worker -->
+                    <div class="form-group" style="padding-top: 1em">
+                        <label class="col-md-3 control-label">Foreign Worker</label>
+                        <div class="col-md-8">
+                            <select name="foreign_worker" class="form-control" required>
+                                <option value="1">yes</option>
+                                <option value="2">no</option>
+                            </select>
+                        </div>
                     </div>
                 </div>
             </div>
 
+            <div class="row" style="margin-top: 3em;">
+                <div class="col-md-5"></div>
+                <div class="col-md-2" style="text-align: center;">
+                    <button type="submit" class="btn btn-success btn-lg" data-target="#myOutput">Submit</button>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+</form>
 
-            
-            <script src='static\script\jquery.min.js'></script>
-            <script src='static\script\bootstrap.min.js'></script>
-    </body>
-</html>
+<div class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Credit Risk</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>{{ credit_risk }}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary">Save changes</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+{% endblock %}
