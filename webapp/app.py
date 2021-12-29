@@ -50,7 +50,7 @@ def preprocess_features(_data):
     nominaldata1=['status','credit_history','purpose','savings','personal_status_sex',
     'other_debtors','other_installment_plans','housing','foreign_worker']
     encoded_data = ohenc.transform(_data[nominaldata1])
-    encoded_df = pd.DataFrame(encoded_data, columns = [f'OHE_{i}' for i in range(1, encoded_data.shape[1] + 1)])
+    encoded_df = pd.DataFrame(encoded_data, columns = [f'OHE{i}' for i in range(1, encoded_data.shape[1] + 1)])
     non_nominal_df = _data.drop(nominaldata1, axis=1).reset_index(drop=True)
     _data = non_nominal_df.merge(encoded_df, how='left', left_index=True, right_index=True)
     _data=MinMaxScaler.transform(_data)
@@ -61,12 +61,11 @@ def predict_diff_thresh(pred_probs, thresh):
     return np.where(pred_probs > thresh, 1, 0)
 
 
-@app.route("/home/", methods=['GET', 'POST'])
+@app.route("/", methods=['GET', 'POST'])
 def index():
     with open(minmax_fn, 'r') as json_file:
         minmax_dict = json.load(json_file)
     context = minmax_dict
-
     if request.method == 'POST':
         data = request.form.to_dict()
         # del data['form_submit']
@@ -76,21 +75,10 @@ def index():
 
         probability = model.predict_proba(data_in)[:, 1]
         prediction = predict_diff_thresh(probability, threshold)
-        context['credit_risk'] = credit_risk_dict[prediction.tolist()[0]]
-    return render_template("index.html", **context); 
-
-@app.route('/predict', methods=['GET', 'POST'])
-def predict():
-    data = request.form.to_dict()
-    del data['form_submit']
-    data = { k: int(v) for k, v in data.items() }
-    
-    data_in = preprocess_features(pd.DataFrame([data]))
-
-    probability = model.predict_proba(data_in)[:, 1]
-    prediction = predict_diff_thresh(probability, threshold)
-    # return redirect(url_for('index'), )
-    return jsonify({ 'credit_risk': credit_risk_dict[prediction.tolist()[0]] })
+        credit_risk_op = credit_risk_dict[prediction.tolist()[0]]
+        context['credit_risk'] = credit_risk_op
+        print({"credit_risk": credit_risk_op})
+    return render_template("index.html", **context)
 
 
 if __name__ == "__main__":
